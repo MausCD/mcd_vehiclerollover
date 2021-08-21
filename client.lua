@@ -17,6 +17,9 @@ if(roll >= -7) then
 elseif(roll <= -13) then
     EnableControlAction(playerPed,59,true)
     EnableControlAction(playerPed,63,true)
+elseif(roll <= -170) then
+    DisableControlAction(playerPed, 59,false)
+    DisableControlAction(playerPed, 63,false)
 else
     DisableControlAction(playerPed, 59,false)
     DisableControlAction(playerPed, 63,false)
@@ -31,4 +34,5 @@ RegisterCommand('checkroll', function()
     TriggerEvent('pNotify:SendNotification', {
         text = {roll}
     })
+    print(roll)
 end,false)
