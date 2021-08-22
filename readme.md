@@ -27,7 +27,7 @@ Open the server.cfg and add start mcd_vehiclerollover there
 
 restart the server and have fun
 
-**Further [Support](https://discord.gg/REYxXaJJsU)**
+**[Support](https://discord.gg/bBrSeqc52x)**
 
 If you have any issues, comments or suggestions please put them below.
 
@@ -51,7 +51,7 @@ Füge mcd_vehiclerollover in resources Ordner ein
 
 starte den server neu und Viel Spaß
 
-**Des Weiteren [Support](https://discord.gg/REYxXaJJsU)**
+**Des Weiteren [Support](https://discord.gg/bBrSeqc52x)**
 
 Wenn Sie Probleme, Kommentare oder Vorschläge haben, geben Sie diese bitte unten ein.
 
