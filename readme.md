@@ -1,5 +1,3 @@
-# THE SCRIPT IS BUGGED AND NOT WORKING I WORK ON A SOLUTION
-
 # MCD_Vehiclerollover
 
 **Script created by MausCD**
@@ -8,8 +6,11 @@
 
 [GitHub](https://github.com/MausCD/mcd_vehiclerollover)
 
+[Website](https://mcd-scripts.netlify.app)
+
 **Changelog**
---
+version 1.0.1
+Huge bug fix
 
 # English
 

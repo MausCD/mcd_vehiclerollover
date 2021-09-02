@@ -1,29 +1,56 @@
+
+local wait = 0
 Citizen.CreateThread(function()
 while true do
-    Citizen.Wait(0)
+Citizen.Wait(wait)
 local playerPed = PlayerPedId()
-local vehicle
-vehicle = GetVehiclePedIsIn(playerPed, false)
+local vehicle = GetVehiclePedIsIn(playerPed, false)
+local tyrecount = GetVehicleNumberOfWheels(vehicle)
+local onwheels  =IsVehicleOnAllWheels(vehicle)
 local roll =    GetEntityRoll(playerPed)
-if(roll >= -7) then
-    if(roll <= 10) then
-        if(roll >= 170) then
-            DisableControlAction(playerPed, 59,false)
-            DisableControlAction(playerPed, 63,false)
-        else
-            EnableControlAction(playerPed,59,true)
-            EnableControlAction(playerPed,63,true)
-        end
-elseif(roll <= -13) then
-    EnableControlAction(playerPed,59,true)
-    EnableControlAction(playerPed,63,true)
-elseif(roll <= -170) then
-    DisableControlAction(playerPed, 59,false)
-    DisableControlAction(playerPed, 63,false)
+local onroof = 0
+local enablecontrol = 1
+
+local good
+if(tyrecount == 2) then
+    good = 0
+elseif(tyrecount >= 2) then
+    good = 1
 else
-    DisableControlAction(playerPed, 59,false)
-    DisableControlAction(playerPed, 63,false)
-end end end end)
+    good = 0
+end 
+if(roll >= 15) then
+onroof = 1
+elseif(roll <= -30) then
+onroof = 1
+end
+
+if(onwheels == false) then
+    if(vehicle >= 1) then
+        if(good == 1) then
+            if(onroof == 1) then
+                    enablecontrol = 1
+            else
+                enablecontrol = 1
+            end
+        else
+        enablecontrol = 1
+        end
+    else
+    enablecontrol = 1
+    end
+else
+    enablecontrol = 1
+end
+
+if(enablecontrol == 1) then
+    EnableControlAction(playerPed,59,true)-- INPUT_VEH_MOVE_LR
+elseif(enablecontrol == 0) then
+    -- 
+    DisableControlAction(playerPed, 59,false) -- INPUT_VEH_MOVE_LR
+end
+end end)
+
 
 
 RegisterCommand('checkroll', function() 
@@ -36,3 +63,16 @@ RegisterCommand('checkroll', function()
     })
     print(roll)
 end,false)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(5000)
+        local playerPed = PlayerPedId()
+        local vehicle
+        vehicle = GetVehiclePedIsIn(playerPed, false)
+        local roll =    GetEntityRoll(playerPed)
+        TriggerEvent('pNotify:SendNotification', {
+            text = {roll}
+        })
+    end
+end)
