@@ -5,9 +5,11 @@ while true do
 Citizen.Wait(wait)
 local playerPed = PlayerPedId()
 local vehicle = GetVehiclePedIsIn(playerPed, false)
+local tyrecount = 2
+local onwheels = 1
 if(vehicle >= 1) then
-local tyrecount = GetVehicleNumberOfWheels(vehicle)
-local onwheels  =IsVehicleOnAllWheels(vehicle)
+tyrecount = GetVehicleNumberOfWheels(vehicle)
+onwheels  =IsVehicleOnAllWheels(vehicle)
 end
 local roll =    GetEntityRoll(playerPed)
 local onroof = 0
